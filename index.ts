@@ -30,7 +30,7 @@ server.register(cors, {
 });
 server.register(require('./routes/v1'), { prefix: 'v1' });
 
-server.listen({ port: (process.env.PORT as number | undefined) ?? 8080 }, (err, address) => {
+server.listen({ host: '0.0.0.0', port: (process.env.PORT as number | undefined) ?? 8080 }, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);

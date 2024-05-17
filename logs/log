@@ -1,0 +1,53 @@
+[00:23:12 UTC] [32mINFO[39m: [36mServer listening at http://[::1]:8080[39m
+[00:23:12 UTC] [32mINFO[39m: [36mServer listening at http://127.0.0.1:8080[39m
+[00:23:28 UTC] [32mINFO[39m: [36mincoming request[39m
+    reqId: "req-1"
+    req: {
+      "method": "POST",
+      "url": "/auth/v1",
+      "hostname": "localhost:8080",
+      "remoteAddress": "::1",
+      "remotePort": 59116
+    }
+[00:23:28 UTC] [32mINFO[39m: [36mRoute POST:/auth/v1 not found[39m
+    reqId: "req-1"
+[00:23:28 UTC] [32mINFO[39m: [36mrequest completed[39m
+    reqId: "req-1"
+    res: {
+      "statusCode": 404
+    }
+    responseTime: 5.666799962520599
+[00:23:36 UTC] [32mINFO[39m: [36mincoming request[39m
+    reqId: "req-2"
+    req: {
+      "method": "POST",
+      "url": "/auth/v1/login",
+      "hostname": "localhost:8080",
+      "remoteAddress": "::1",
+      "remotePort": 59116
+    }
+[00:23:36 UTC] [32mINFO[39m: [36mRoute POST:/auth/v1/login not found[39m
+    reqId: "req-2"
+[00:23:36 UTC] [32mINFO[39m: [36mrequest completed[39m
+    reqId: "req-2"
+    res: {
+      "statusCode": 404
+    }
+    responseTime: 1.2645000219345093
+[00:24:24 UTC] [32mINFO[39m: [36mincoming request[39m
+    reqId: "req-3"
+    req: {
+      "method": "POST",
+      "url": "/v1/auth/login",
+      "hostname": "localhost:8080",
+      "remoteAddress": "::1",
+      "remotePort": 59116
+    }
+[00:24:26 UTC] [32mINFO[39m: [36mrequest completed[39m
+    reqId: "req-3"
+    res: {
+      "statusCode": 200
+    }
+    responseTime: 2316.439699947834
+[00:48:53 UTC] [32mINFO[39m: [36mServer listening at http://[::1]:8080[39m
+[00:48:53 UTC] [32mINFO[39m: [36mServer listening at http://127.0.0.1:8080[39m
