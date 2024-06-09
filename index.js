@@ -6,7 +6,7 @@ const port = 3000;
 app.use(express.json());
 
 // Route to handle POST requests to /streams/webhooks
-app.get("/streams/webhooks", (req, res) => {
+app.post("/streams/webhooks", (req, res) => {
   console.log("Received webhook:", req.body);
   res.sendStatus(200);
 });
