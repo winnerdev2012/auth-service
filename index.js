@@ -40,10 +40,14 @@ async function updateCurrentStage(network, value) {
   var myContract = new web3.eth.Contract(presaleABI, presaleAddress);
   console.log("---contract---");
 
-  var receipt = await myContract.methods
-    .changeCurrentStage(value)
-    .send({ from: PUBLIC_ADDRESS });
-  console.log(receipt);
+  try {
+    var receipt = await myContract.methods
+      .changeCurrentStage(value)
+      .send({ from: PUBLIC_ADDRESS });
+    console.log(receipt);
+  } catch (error) {
+    console.log("Error: >>>>>>>>>>>>>>>>", error);
+  }
 }
 
 function parseHexString(hex) {
