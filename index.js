@@ -47,6 +47,7 @@ async function updateCurrentStage(network, value) {
     console.log(receipt);
   } catch (error) {
     console.log("Error: >>>>>>>>>>>>>>>>", error);
+    updateCurrentStage(network, value);
   }
 }
 
