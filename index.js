@@ -21,29 +21,32 @@ app.use(express.json());
 const SepoliaPresaleABI = require("./abis/SepoliaPresale.json");
 const BSCTestnetPresaleABI = require("./abis/BSCTestnetPresale.json");
 
+var ETHprovider = new Provider(PRIVATE_KEY, SEPOLIA_RPCURL);
+var ETHweb3 = new Web3(ETHprovider);
+var ETHContract = new ETHweb3.eth.Contract(
+  SepoliaPresaleABI,
+  SEPOLIA_PRESALE_ADDRESS
+);
+
+var BSCprovider = new Provider(PRIVATE_KEY, BSCTESTNET_RPCURL);
+var BSCweb3 = new Web3(BSCprovider);
+var BSCContract = new BSCweb3.eth.Contract(
+  BSCTestnetPresaleABI,
+  BSCTESTNET_PRESALE_ADDRESS
+);
+
 async function updateCurrentStage(network, value) {
-  var rpcURL, presaleABI, presaleAddress;
-  if (network === "SEPOLIA") {
-    console.log("SEPOLIA");
-    rpcURL = SEPOLIA_RPCURL;
-    presaleABI = SepoliaPresaleABI;
-    presaleAddress = SEPOLIA_PRESALE_ADDRESS;
-  } else if (network === "BSCTESTNET") {
-    console.log("BSCTESTNET");
-    rpcURL = BSCTESTNET_RPCURL;
-    presaleABI = BSCTestnetPresaleABI;
-    presaleAddress = BSCTESTNET_PRESALE_ADDRESS;
-  }
-
-  var provider = new Provider(PRIVATE_KEY, rpcURL);
-  var web3 = new Web3(provider);
-  var myContract = new web3.eth.Contract(presaleABI, presaleAddress);
-  console.log("---contract---");
-
   try {
-    var receipt = await myContract.methods
-      .changeCurrentStage(value)
-      .send({ from: PUBLIC_ADDRESS });
+    var receipt;
+    if (network === "SEPOLIA") {
+      receipt = await ETHContract.methods
+        .changeCurrentStage(value)
+        .send({ from: PUBLIC_ADDRESS });
+    } else if (network === "BSCTESTNET") {
+      receipt = await BSCContract.methods
+        .changeCurrentStage(value)
+        .send({ from: PUBLIC_ADDRESS });
+    }
     console.log(receipt);
   } catch (error) {
     console.log("Error: >>>>>>>>>>>>>>>>", error);
